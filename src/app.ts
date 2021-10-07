@@ -51,13 +51,14 @@ class App {
 
     private initializeRoutes(routes: Routes[]) {
         routes.forEach((route) => {
-            if (route.path === "/restaurants") {
+            
+            if (route.path == "/restaurants" || route.path =="/transaction") {
 
                 this.app.use('/', authMiddleware, route.router);
-            } else {
+            }
+             else {
                 this.app.use('/', route.router);
             }
-            
         });
     }
 
@@ -72,3 +73,4 @@ class App {
 }
 
 export default App;
+

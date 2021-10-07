@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import App from './app';
 import { UsersRoute } from './routes/users.route';
 import { RestaurantsRoute } from './routes/restaurants.route';

@@ -35,8 +35,8 @@ export default class RestaurantsService {
 
         let response = await axios(options);
         let restaurants = response.data.data
-        res.send({
-            rta: restaurants
+        res.status(201).send({
+            restaruantes: restaurants
 
         });
     });

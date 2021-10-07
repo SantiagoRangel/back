@@ -13,6 +13,6 @@
         "moduleResolution": "node",
         "typeRoots": ["./node_modules/@types"]
     },
-    "include": ["src/**/*.ts"],
+    "include": ["src/**/*.ts", "src/tests/routes.test.js"],
     "exclude": ["node_modules"]
 }

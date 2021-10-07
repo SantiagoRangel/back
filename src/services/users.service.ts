@@ -60,9 +60,8 @@ export default class UsersService {
         return asyncRunner(req, res, async (req: Request, res: Response, db: EntityManager) => {
             const { email, password}: { email: string; [key: string]: any } = req.body;
             if (!(email && password)) {
-                throw new HttpError(400, 'Missing required fields email and password');
+                throw new HttpError(400, 'Missing required fields email or password');
             }
-
             let user = await db.findOne(User, { where: { email: email.toLowerCase() } });
 
             if (!user) {
@@ -71,7 +70,7 @@ export default class UsersService {
 
             passwordMatch(password, user.password);
 
-            res.send({
+            res.status(201).send({
                 token: generateJWT(user),
                 email: user.email,
                 name: user.name,

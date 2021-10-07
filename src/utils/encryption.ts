@@ -4,17 +4,31 @@ import { User } from '../entities/User';
 import HttpError from '../exceptions/HttpException';
 import { DecodedToken } from '../interfaces/token.interface';
 
+/**
+ * Saca el hash de una contraseña
+ * @param password contraseña
+ * @returns el hash de la contraseña
+ */
 export const hashPassword = async (password: string): Promise<string> => {
     const salt = await bcrypt.genSalt(10);
     return bcrypt.hash(password, salt);
 };
 
+/**
+ * Revisa si las contraseñas hasheadas son las mismas
+ * @param inputPassword 
+ * @param hashedPassword 
+ */
 export const passwordMatch = (inputPassword: string, hashedPassword: string) => {
     if (!bcrypt.compareSync(inputPassword, hashedPassword)) {
         throw new HttpError(400, 'Password does not match');
     }
 };
-
+/**
+ * Genera un jwt para un usuario
+ * @param user 
+ * @returns jwt
+ */
 export const generateJWT = (user: User): string => {
     const superSecretKey = `-----BEGIN RSA PRIVATE KEY-----
 MIICXgIBAAKBgQDZnTCMMH7qOoGxTRdjxc24nCd+BYUWYc6czU2CX3Q8LVo5NCNW
@@ -44,6 +58,12 @@ svvtVFOHxmoO3HSjXTXYfOi1nx9lMFYjZ43MV0ZyaM3SdA==
     return token;
 };
 
+
+/**
+ * Decodifica el token
+ * @param token 
+ * @returns 
+ */
 export const decodeToken = (token: string): DecodedToken => {
     const publicKey = `-----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDZnTCMMH7qOoGxTRdjxc24nCd+
