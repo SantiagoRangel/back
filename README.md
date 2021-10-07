@@ -7,7 +7,19 @@ El proyecto corre en el puerto 8080. En este se puede están incluidas las rutas
 
 a. POST: /users
 
+ejemplo: 
+
 b. POST: /users/login
+
+ejemplo: 
+
+```yaml
+{
+    "email": "adrian@hotmail.com",
+    "password": "adrian"
+}
+
+
 
 c. POST: /restaurants
 
