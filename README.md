@@ -12,3 +12,5 @@ b. POST: /users/login
 c. POST: /restaurants
 
 d. GET: /transaction
+
+e. POST: /users/logout
