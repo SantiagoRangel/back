@@ -1,6 +1,4 @@
 const request = require('supertest');
-
-let server = require('../app');
 const API = 'http://localhost:8080/';
 const Chance = require('chance');
 var chance = new Chance();
@@ -9,7 +7,6 @@ describe('Pruebas para la prueba', () => {
     let randomName = chance.name().replace(' ', '');
     let randomPassword = randomName;
     let randomEmail = (randomName + '@gmail.com').toLowerCase();
-    console.log(randomName);
     test('POST create new user', async () => {
         const res = await request(API).post('users').send({
             name: randomName,
@@ -64,7 +61,6 @@ describe('Pruebas para la prueba', () => {
 
     test('POST Create transaction ', async () => {
         let randomAmount = chance.integer({ min: 1, max: 100000 });
-        console.log(randomAmount);
         const res = await request(API).post('transaction').set('authorization', tokenLogin).send({
             amount: randomAmount,
         });
