@@ -18,7 +18,7 @@ ejemplo:
     "email": "adrian@hotmail.com",
     "password": "adrian"
 }
-
+```
 
 
 c. POST: /restaurants
