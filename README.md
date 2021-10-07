@@ -1,7 +1,9 @@
 # Backend
-Backend server
+Backend server hecho con Express y Postgress.
 
-Hay que tener instalado postgress y crear la base de datos para que el nombre de la base de datos, el username y password estén configurados igual que en archivo llamdo ormconfig
+Para ejecutar el proyecto hay que ejecutar npm install y también hay que tener instalado postgress para luego crear la base de datos para que el nombre de la base de datos, el username y password estén configurados igual que en el archivo llamado ormconfig.
+
+Para ejecutar los tests, se debe tener corriendo el proyecto usando npm start y paralelamente ejecutar npm jest.
 
 El proyecto corre en el puerto 8080. En este se puede están incluidas las rutas de la prueba:
 
