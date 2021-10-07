@@ -1,3 +1,4 @@
+import { ExpiredToken } from '../entities/ExpiredToken';
 import {  Request, Response } from 'express';
 import { EntityManager } from 'typeorm';
 import { User } from '../entities/User';
@@ -74,6 +75,33 @@ export default class UsersService {
                 token: generateJWT(user),
                 email: user.email,
                 name: user.name,
+            });
+        });
+    };
+
+
+    /**
+     * Añade el token expirado a la lista de tokens expirados para invalidar peticiones que lo usen
+     * @param req 
+     * @param res 
+     * @returns retorna el objeto de token expirado creado 
+     */
+    logout = async (req: Request, res: Response) => {
+        return asyncRunner(req, res, async (req: Request, res: Response, db: EntityManager) => {
+            const {
+                token,
+            }: { token: string;} = req.body;
+            if (!( token )) {
+                throw new HttpError(400, 'Missing required fields token');
+            }
+           
+            let newExpiredToken = new ExpiredToken(
+                token
+            );
+            newExpiredToken = await db.save(newExpiredToken);
+
+            res.status(201).send({
+                newExpiredToken
             });
         });
     };

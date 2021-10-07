@@ -7,7 +7,7 @@ import { authReq } from '../interfaces/token.interface';
 import { asyncRunner } from '../utils/async';
 
 
-export default class UsersService {
+export default class UsersTransactionService {
 
     /**
      * Crea nueva transacción

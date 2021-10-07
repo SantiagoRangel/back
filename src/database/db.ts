@@ -9,7 +9,6 @@ export const getConnection = async (): Promise<EntityManager> => {
     const connectionManager = getConnectionManager();
     let connection: Connection;
     if (connectionManager.has(config.name)) {
-        console.log(config.name)
         connection = connectionManager.get(config.name);
     } else {
         connection = await createConnection(config);

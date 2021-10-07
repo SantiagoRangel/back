@@ -35,7 +35,6 @@ export default class RestaurantsService {
 
         let response = await axios(options);
         let restaurants = response.data.data
-        console.log(restaurants.length)
         res.send({
             rta: restaurants
 

@@ -22,5 +22,6 @@ export class UsersRoute implements Route {
         this.router.post(this.path, this.usersService.createUser);
         this.router.put(this.path, this.usersService.updateUser);
         this.router.post(`${this.path}/login`, this.usersService.login);
+        this.router.post(`${this.path}/logout`, this.usersService.logout);
     }
 }
